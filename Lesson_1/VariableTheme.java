@@ -11,7 +11,7 @@ public class VariableTheme {
         float numFloat = (float) Runtime.getRuntime().freeMemory();
         double numDouble = (double) Runtime.getRuntime().maxMemory();
         char numChar = (char) Runtime.getRuntime().availableProcessors();
-        boolean answer=Runtime.getRuntime().maxMemory()==1;
+        boolean answer = Runtime.getRuntime().maxMemory()==1;
         System.out.println("Примитивный тип данных byte - " + numByte);
         System.out.println("Примитивный тип данных short - " + numShort);
         System.out.println("Примитивный тип данных int - " + numInt);

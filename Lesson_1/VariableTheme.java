@@ -26,7 +26,8 @@ public class VariableTheme {
         int priceBook = 200;
         int discount = 11;
         double discountPrice = (pricePen + priceBook) * ((100.0 - discount) / 100);
-        System.out.println("Сумма скидки при приобретении товаров ручка + книга - " + discount + "%");
+        System.out.println("Сумма скидки при приобретении товаров ручка + книга - " + discount + 
+                "%");
         System.out.println("Суммарная стоимость товаров с учетом скидки - " + discountPrice);
 
         System.out.println("\n3. Вывод на консоль слова JAVA");

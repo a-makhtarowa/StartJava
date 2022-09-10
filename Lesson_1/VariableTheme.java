@@ -3,22 +3,21 @@ import java.lang.Object;
 public class VariableTheme {   
     public static void main(String[] args) {
         System.out.println("1. Создание переменных и вывод их значений на консоль");
-        byte numByte = (byte) Runtime.getRuntime().availableProcessors();
-        short numShort = (short) Runtime.getRuntime().maxMemory();
-        int numInt = (int) Runtime.getRuntime().freeMemory();
-        long numLong = Runtime.getRuntime().maxMemory();
-
-        float numFloat = (float) Runtime.getRuntime().freeMemory();
-        double numDouble = (double) Runtime.getRuntime().maxMemory();
-        char numChar = (char) Runtime.getRuntime().availableProcessors();
-        boolean answer = Runtime.getRuntime().maxMemory()==1;
-        System.out.println("Примитивный тип данных byte - " + numByte);
-        System.out.println("Примитивный тип данных short - " + numShort);
-        System.out.println("Примитивный тип данных int - " + numInt);
-        System.out.println("Примитивный тип данных long - " + numLong);
-        System.out.println("Примитивный тип данных float - " + numFloat);
-        System.out.println("Примитивный тип данных double - " + numDouble);
-        System.out.println("Примитивный тип данных char - " + numChar);
+        byte coreNum = 8;
+        short minMemory = 16;
+        int systemType = 64;
+        long prodCode = 2596017006798l;
+        float cpuFreq = 2.4f;
+        double windowsVersion = 8.1;
+        char sharp = '#';
+        boolean answer = true;
+        System.out.println("Примитивный тип данных byte - " + coreNum);
+        System.out.println("Примитивный тип данных short - " + minMemory);
+        System.out.println("Примитивный тип данных int - " + systemType);
+        System.out.println("Примитивный тип данных long - " + prodCode);
+        System.out.println("Примитивный тип данных float - " + cpuFreq);
+        System.out.println("Примитивный тип данных double - " + windowsVersion);
+        System.out.println("Примитивный тип данных char - " + sharp);
         System.out.println("Примитивный тип данных boolean - " + answer);
 
         System.out.println("\n2. Расчет стоимости товара со скидкой");
@@ -42,13 +41,13 @@ public class VariableTheme {
         int maxInt = Integer.MAX_VALUE;
         long maxLong = Long.MAX_VALUE;
         System.out.println("Максимальное значение, инкремент и декремент типа byte: " + maxByte + 
-                "; " + (byte) (maxByte++) + "; " + (byte) (maxByte--));
+                "; " + (maxByte + 1) + "; " + (maxByte - 1));
         System.out.println("Максимальное значение, инкремент и декремент типа short: " + maxShort + 
-                "; " + (short) (maxShort++) + "; " + (short) (maxShort--));
+                "; " + (maxShort + 1) + "; " + (maxShort - 1));
         System.out.println("Максимальное значение, инкремент и декремент типа int: " + maxInt + 
-                "; " + (maxInt++) + "; " + (maxInt--));
+                "; " + (maxInt + 1) + "; " + (maxInt - 1));
         System.out.println("Максимальное значение, инкремент и декремент типа long: " + maxLong + 
-                "; " + (maxLong++) + "; " + (maxLong--));
+                "; " + (maxLong + 1) + "; " + (maxLong - 1));
 
         System.out.println("\n5. Перестановка значений переменных");
         int num1 = 2;
@@ -62,15 +61,15 @@ public class VariableTheme {
         System.out.println("Новые значения переменных: num1 = " + num1 + ", num2 = " + num2);
         System.out.println("II. Перестановка значений с помощью арифметических операций");
         System.out.println("Исходные значения переменных: num1 = " + num1 + ", num2 = " + num2);
-        num1 = num1 + num2;
+        num1 += num2;
         num2 = num1 - num2;
-        num1 = num1 - num2;
+        num1 -= num2;
         System.out.println("Новые значения переменных: num1 = " + num1 + ", num2 = " + num2);
         System.out.println("III. Перестановка значений с помощью побитовых операций");
         System.out.println("Исходные значения переменных: num1 = " + num1 + ", num2 = " + num2);
-        num1 = num1 ^ num2; 
-        num2 = num1 ^ num2;
-        num1 = num1 ^ num2;
+        num1 ^= num2; 
+        num2 ^= num1;
+        num1 ^= num2;
         System.out.println("Новые значения переменных: num1 = " + num1 + ", num2 = " + num2);
 
         System.out.println("\n6. Вывод символов и их кодов");
@@ -96,21 +95,20 @@ public class VariableTheme {
         System.out.println(ones + " единиц");
 
         System.out.println("\n8. Вывод на консоль ASCII-арт Дюка");
-        char forwardSlash = '/';
+        char slash = '/';
         char space = ' ';
         char underscore = '_';
-        char backSlash = '\\';
+        char backslash = '\\';
         char openParenthesis = '(';
         char closeParenthesis = ')';
-        System.out.println("" + space + space + space + space + forwardSlash + backSlash);
-        System.out.println("" + space + space + space + forwardSlash + space  + space + 
-                backSlash);
-        System.out.println("" + space + space + forwardSlash + underscore + openParenthesis + 
-                space + closeParenthesis + backSlash);
-        System.out.println("" + space + forwardSlash + space + space  + space + space + 
-                space + space + backSlash);
-        System.out.println("" + forwardSlash + underscore + underscore + underscore + underscore + 
-                forwardSlash + backSlash + underscore + underscore + backSlash);
+        System.out.println("" + space + space + space + space + slash + backslash);
+        System.out.println("" + space + space + space + slash + space  + space + backslash);
+        System.out.println("" + space + space + slash + underscore + openParenthesis + space + 
+                closeParenthesis + backslash);
+        System.out.println("" + space + slash + space + space  + space + space + space + 
+                space + backslash);
+        System.out.println("" + slash + underscore + underscore + underscore + underscore + slash + 
+                backslash + underscore + underscore + backslash);
 
         System.out.println("\n9. Произведение и сумма цифр числа");
         num1 = 345;

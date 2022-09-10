@@ -123,7 +123,7 @@ public class VariableTheme {
         System.out.println("\n10. Преобразование секунд");
         int totalSeconds = 86399;
         int hours = totalSeconds / 60 / 60;
-        int minutes = totalSeconds % 60;
+        int minutes = totalSeconds / 60 % 60;
         int seconds = totalSeconds % 60;
         System.out.println("Точное время: " + hours + ":" + minutes + ":" + seconds);
     }

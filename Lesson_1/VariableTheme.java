@@ -1,5 +1,3 @@
-import java.lang.Object;
-
 public class VariableTheme {   
     public static void main(String[] args) {
         System.out.println("1. Создание переменных и вывод их значений на консоль");
@@ -40,14 +38,14 @@ public class VariableTheme {
         short maxShort = Short.MAX_VALUE;
         int maxInt = Integer.MAX_VALUE;
         long maxLong = Long.MAX_VALUE;
-        System.out.println("Максимальное значение, инкремент и декремент типа byte: " + maxByte + 
-                "; " + (maxByte + 1) + "; " + (maxByte - 1));
+        System.out.println("Максимальное значение, инкремент и декремент типа byte: " + 
+                maxByte + "; " + (++maxByte) + "; " + (--maxByte));
         System.out.println("Максимальное значение, инкремент и декремент типа short: " + maxShort + 
-                "; " + (maxShort + 1) + "; " + (maxShort - 1));
+                "; " + (++maxShort) + "; " + (--maxShort));
         System.out.println("Максимальное значение, инкремент и декремент типа int: " + maxInt + 
-                "; " + (maxInt + 1) + "; " + (maxInt - 1));
+                "; " + (++maxInt) + "; " + (--maxInt));
         System.out.println("Максимальное значение, инкремент и декремент типа long: " + maxLong + 
-                "; " + (maxLong + 1) + "; " + (maxLong - 1));
+                "; " + (++maxLong) + "; " + (--maxLong));
 
         System.out.println("\n5. Перестановка значений переменных");
         int num1 = 2;

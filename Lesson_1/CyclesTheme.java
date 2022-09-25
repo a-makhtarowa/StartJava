@@ -42,15 +42,15 @@ public class CyclesTheme {
         System.out.println("\n\n3. Вывод реверсивного числа и суммы его цифр");
         num1 = 1234;
         int copyNum1 = num1;
-        int resultSum = 0;
+        int sumDigit = 0;
         System.out.println("Исходное число " + num1 + " в обратном порядке - ");
         while (copyNum1 > 0) {
             int nextDigit = copyNum1 % 10;
-            resultSum += nextDigit;
+            sumDigit += nextDigit;
             copyNum1 /= 10;
             System.out.print(nextDigit);
         }
-        System.out.println("\nСумма цифр числа - " + resultSum);
+        System.out.println("\nСумма цифр числа - " + sumDigit);
 
         System.out.println("\n4. Вывод чисел на консоль в несколько строк");
         startRange = 1;
@@ -72,14 +72,14 @@ public class CyclesTheme {
 
         System.out.println("\n\n5. Проверка количества единиц на четность");
         num1 = 3141591;
-        int current = num1;
+        copyNum1 = num1;
         int countOnes = 0;
-        while (current > 0) {
-            int nextDigit = current % 10;
+        while (copyNum1 > 0) {
+            int nextDigit = copyNum1 % 10;
             if (nextDigit == 1) {
                 countOnes++;
             }
-            current /= 10;
+            copyNum1 /= 10;
         }
         if (countOnes % 2 == 0) {
             System.out.println("Число " + num1 + " содержит " + countOnes + 
@@ -129,22 +129,20 @@ public class CyclesTheme {
         System.out.println("Dec  Char");
         for (i = 1; i <= 127; i++) {
             char codeChar = (char) i;
-            if (i >= 0 && i <= 47 && i % 2 == 1) {
+            if ((i >= 0 && i <= 47) && (i % 2 == 1)) {
                 System.out.printf("%3d    %c\n", i, codeChar);
-            } else if (i >= 97 && i <= 122 && i % 2 == 0) {
+            } else if ((i >= 97 && i <= 122) && (i % 2 == 0)) {
                 System.out.printf("%3d    %c\n", i, codeChar);
             }
         }
 
         System.out.println("\n8. Проверка, является ли число палиндромом");
         num1 = 1234321;
-        current = num1;
-        resultSum = 0;
+        copyNum1 = num1;
         int reverseNumber = 0;
-        while (current > 0) {
-            int nextDigit = current % 10;
-            resultSum += nextDigit;
-            current /= 10;
+        while (copyNum1 > 0) {
+            int nextDigit = copyNum1 % 10;
+            copyNum1 /= 10;
             reverseNumber = reverseNumber * 10 + nextDigit;
         }
         if (num1 == reverseNumber) {
@@ -155,47 +153,41 @@ public class CyclesTheme {
 
         System.out.println("\n9. Определение, является ли число счастливым");
         num1 = 123476;
-        current = num1;
-        int resultSum1 = 0;
-        int resultSum2 = 0;
+        copyNum1 = num1;
+        int sumFirstThreeNum = 0;
+        int sumLastThreeNum = 0;
         count = 0;
-        while (current > 0) {
-            int nextDigit = current % 10;
+        while (copyNum1 > 0) {
+            int nextDigit = copyNum1 % 10;
             if (count <= 2) {
-                resultSum1 += nextDigit;
+                sumFirstThreeNum += nextDigit;
             } else {
-                resultSum2 += nextDigit;
+                sumLastThreeNum += nextDigit;
             }
             count++;
-            current /= 10;
+            copyNum1 /= 10;
         }
-        System.out.println("Сумма цифр " + num1 % 1000 + " = " + resultSum1);
-        System.out.println("Сумма цифр " + num1 / 1000 + " = " + resultSum2);
-        System.out.println(resultSum1 == resultSum2 ? "Число является счастливым" : 
+        System.out.println("Сумма цифр " + num1 % 1000 + " = " + sumFirstThreeNum);
+        System.out.println("Сумма цифр " + num1 / 1000 + " = " + sumLastThreeNum);
+        System.out.println(sumFirstThreeNum == sumLastThreeNum ? "Число является счастливым" : 
                 "Число не является счастливым");
 
         System.out.println("\n10. Вывод таблицы умножения Пифагора");
-        System.out.println("   |  2  3  4  5  6  7  8  9");
+        System.out.println(" |  2  3  4  5  6  7  8  9");
+        System.out.println("--------------------------");
         for (i = 1; i < 10 ; i++) {
             for (int j = 0; j < 10; j++) {
-                if (i == 1) {
-                    System.out.print("---");
-                    if (j == 9) {
-                        System.out.println();
-                    }
-                } else {
-                    if (j == 0) {
-                        System.out.printf("%3d", i);
-                        continue;
-                    }
-                    if (j == 1) {
-                        System.out.print("|");
-                        continue;
-                    }
-                    System.out.printf("%3d", i * j);
-                    if (j == 9) {
-                        System.out.println();
-                    }
+                if (j == 0) {
+                    System.out.printf("%1d", i);
+                    continue;
+                }
+                if (j == 1) {
+                    System.out.print("|");
+                    continue;
+                }
+                System.out.printf("%3d", i * j);
+                if (j == 9) {
+                    System.out.println();
                 }
             }
         }

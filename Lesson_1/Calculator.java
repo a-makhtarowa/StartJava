@@ -6,20 +6,20 @@ public class Calculator {
         char sign = '^';
         long result = 1;
         if (sign == '+') {
-            System.out.println(num1 + " " + sign + " " + num2 + " = " + (num1 + num2));
+            result = num1 + num2;
         } else if (sign == '-') {
-            System.out.println(num1 + " " + sign + " " + num2 + " = " + (num1 - num2));
+            result = num1 - num2;
         } else if (sign == '*') {
-            System.out.println(num1 + " " + sign + " " + num2 + " = " + (num1 * num2));
+            result = num1 * num2;
         } else if (sign == '/') {
-            System.out.println(num1 + " " + sign + " " + num2 + " = " + (num1 / num2));
+            result = num1 / num2;
         } else if (sign == '^') {
             for (int i = 0; i < num2; i++) {
                 result *= num1;
             }
-            System.out.println(num1 + " " + sign + " " + num2 + " = " + result);
         } else if (sign == '%') {
-            System.out.println(num1 + " " + sign + " " + num2 + " = " + (num1 % num2));
+            result = num1 % num2;
         } 
+        System.out.println(num1 + " " + sign + " " + num2 + " = " + result);
     }
 }

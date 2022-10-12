@@ -8,6 +8,7 @@ public class Wolf {
     public void setSex(String sex) {
         this.sex = sex;
     }
+
     public String getSex() {
         return sex;
     }
@@ -15,6 +16,7 @@ public class Wolf {
     public void setName(String name) {
         this.name = name;
     }
+
     public String getName() {
         return name;
     }
@@ -22,6 +24,7 @@ public class Wolf {
     public void setWeight(double weight) {
         this.weight = weight;
     }
+
     public double getWeight() {
         return weight;
     }
@@ -33,6 +36,7 @@ public class Wolf {
             this.age = age;
         }
     }
+
     public int getAge() {
         return age;
     }
@@ -40,6 +44,7 @@ public class Wolf {
     public void setColor(String color) {
         this.color = color;
     }
+    
     public String getColor() {
         return color;
     }

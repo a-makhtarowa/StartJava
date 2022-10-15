@@ -3,16 +3,13 @@ import java.util.Scanner;
 public class CalculatorTest {
     public static void main(String[] args) {
         Scanner scr = new Scanner(System.in);
-        while (true) {
-            printCalculation(scr);
-            boolean nextIteration = continueCalculation(scr);
-            if (!nextIteration) {
-                break;
-            }
+        inputData(scr);
+        while (isNext(scr)) {
+            inputData(scr);
         }
     }
 
-    public static void printCalculation(Scanner scr) {
+    private static void inputData(Scanner scr) {
         Calculator calculator = new Calculator();
         System.out.println("Введите первое число: ");
         calculator.setNum1(scr.nextInt());
@@ -20,11 +17,10 @@ public class CalculatorTest {
         calculator.setSign(scr.next().charAt(0));
         System.out.println("Введите второе число: ");
         calculator.setNum2(scr.nextInt());
-        calculator.calculate();
-        System.out.println(calculator.getResult());
+        System.out.println(calculator.calculate());
     }
 
-    public static boolean continueCalculation(Scanner scr) {
+    private static boolean isNext(Scanner scr) {
         while (true) {
             System.out.println("Хотите продолжить вычисления? [yes/no]: ");
             String answer = scr.next();

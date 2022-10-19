@@ -5,6 +5,17 @@ public class Jaeger {
     private double height;
     private double weight;
 
+    public Jaeger() {
+    }
+
+    public Jaeger(String modelName, String mark, String origin, double height, double weight) {
+        this.modelName = modelName;
+        this.mark = mark;
+        this.origin = origin;
+        this.height = height;
+        this.weight = weight;
+    }
+
     public void setModelName(String modelName) {
         this.modelName = modelName;
     }
@@ -45,39 +56,27 @@ public class Jaeger {
         return weight;
     }
 
-    public Jaeger() {
-    }
-
-    public Jaeger(String modelName, String mark, String origin, double height, double weight) {
-        this.modelName = modelName;
-        this.mark = mark;
-        this.origin = origin;
-        this.height = height;
-        this.weight = weight;
-    }
-
-
-    public String printEnergyCore(String modelName) {
+    public void printEnergyCore() {
         if ("CoyoteTango".equals(modelName)) {
-            return " uses Iso-thor reaction chamber";
+            System.out.println(modelName + " uses Iso-thor reaction chamber");
         } else if ("ChernoAlpha".equals(modelName)) {
-            return " uses Stun Core 08";
+            System.out.println(modelName + " uses Stun Core 08");
         } else {
-            return ", hmm, something new.. Interesting!";
+            System.out.println(modelName + ", hmm, something new.. Interesting!");
         }
     }
 
-    public String useMainFightingTechnique(String modelName) {
+    public void useMainFightingTechnique() {
         if ("CoyoteTango".equals(modelName)) {
-            return " uses Supercritical throwdown";
+            System.out.println(modelName + " uses Supercritical throwdown");
         } else if ("ChernoAlpha".equals(modelName)) {
-            return " uses Sluggernaut Headshock";
+            System.out.println(modelName + " uses Sluggernaut Headshock");
         } else {
-            return " is not so usual as I thought";
+            System.out.println(modelName + " is not so usual as I thought");
         }
     }
 
-    public int printStrength() {
+    public int getStrength() {
         if ("CoyoteTango".equals(modelName)) {
             return 7;
         } else if ("ChernoAlpha".equals(modelName)) {

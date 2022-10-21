@@ -3,10 +3,9 @@ import java.util.Scanner;
 public class CalculatorTest {
     public static void main(String[] args) {
         Scanner scn = new Scanner(System.in);
-        inputExpression(scn);
-        while (isNext(scn)) {
+        do {
             inputExpression(scn);
-        }
+        } while (isNext());
     }
 
     private static void inputExpression(Scanner scn) {

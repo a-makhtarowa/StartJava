@@ -10,6 +10,7 @@ public class JaegerTest {
                 jaeger1.getModelName() + "\nThe main mark is " + jaeger1.getMark() + " from " + 
                 jaeger1.getOrigin() + "\nIt's height is " + jaeger1.getHeight() + " m." + 
                 "It's weight is " + jaeger1.getWeight() + " tons.");
+        
         Jaeger jaeger2 = new Jaeger("ChernoAlpha", "Mark-1", "Russia", 85.34, 2.412);
         System.out.println("\nIn the right corner in blue trousers it's" + 
                 jaeger2.getModelName() + "\nThe main mark is " + jaeger2.getMark() + " from " + 

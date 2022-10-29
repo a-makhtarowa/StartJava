@@ -6,6 +6,7 @@ public class GuessNumber {
     private int endRange = 100;
     private Player player1;
     private Player player2;
+    private int randomNum;
 
     public GuessNumber(Player player1, Player player2) {
         this.player1 = player1;
@@ -13,12 +14,12 @@ public class GuessNumber {
     }
 
     public void start() {
-        int randomNum = generateRandomNum();
+        randomNum = generateRandomNum();
         boolean isEndGame;
         do {
-            isEndGame = isGuessed(randomNum, player1);
-            if (!isEndGame) {
-                isEndGame = isGuessed(randomNum, player2);
+            isEndGame = isGuessed(player1);
+            if (!isGuessed(player1)) {
+                isEndGame = isGuessed(player2);
             }
         } while (!isEndGame);
     }
@@ -26,18 +27,24 @@ public class GuessNumber {
     private int generateRandomNum() {
         int difference = endRange - startRange;
         Random random = new Random();
-        int randomNum = random.nextInt(difference + 1);
+        randomNum = random.nextInt(difference + 1);
         randomNum += startRange;
         return randomNum;
     }
 
-    private boolean isGuessed(int randomNum1, Player player) {
-        int playerNum = readNextNumber(player);
-        if (playerNum == randomNum1) {
+    private int inputNumber(Player player) {
+        Scanner scn = new Scanner(System.in);
+        System.out.println("Игрок " + player.getName() + " угадывает число");
+        return scn.nextInt();
+    }
+
+    private boolean isGuessed(Player player) {
+        int playerNum = inputNumber(player);
+        if (playerNum == randomNum) {
             System.out.println("Игрок " + player.getName() + " победил!");
             return true;
         }
-        if (playerNum > randomNum1) {
+        if (playerNum > randomNum) {
             System.out.println("Ответ неверный. Ваше число " + playerNum +
                     " больше того, что загадал компьютер");
         } else {
@@ -45,11 +52,5 @@ public class GuessNumber {
                     " меньше того, что загадал компьютер");
         }
         return false;
-    }
-
-    private int readNextNumber(Player player) {
-        Scanner scn = new Scanner(System.in);
-        System.out.println("Игрок " + player.getName() + " угадывает число");
-        return scn.nextInt();
     }
 }

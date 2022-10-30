@@ -1,3 +1,5 @@
+package com.startjava.lesson_2_3.calculator
+
 import java.util.Scanner;
 
 public class CalculatorTest {
@@ -5,7 +7,7 @@ public class CalculatorTest {
         Scanner scn = new Scanner(System.in);
         do {
             inputExpression(scn);
-        } while (isNext());
+        } while (isNext(scn));
     }
 
     private static void inputExpression(Scanner scn) {

@@ -9,10 +9,11 @@ public class ArrayTheme {
         System.out.println("Исходный массив:");
         printArrayInt(arrInt);
         int len = arrInt.length;
-        for (int i = 0, j = len - 1; i < len / 2; i++, j--) {
+        for (int i = 0; i < len / 2; i++) {
+            len--;
             int element = arrInt[i];
-            arrInt[i] = arrInt[j];
-            arrInt[j] = element;
+            arrInt[i] = arrInt[len];
+            arrInt[len] = element;
         }
         System.out.println("\nОбратный массив:");
         printArrayInt(arrInt);
@@ -24,16 +25,11 @@ public class ArrayTheme {
             arrInt[i] = i;
         }
         int mult = 1;
-        for (int i = 0; i < len; i++) {
-            mult *= (i != 0 && i != len - 1) ? arrInt[i] : 1;
+        for (int i = 1; i < len - 1; i++) {
+            mult *= arrInt[i];
+            System.out.print((i < len - 2) ? (arrInt[i] + " * ") : (arrInt[i] + " = " + mult + "\n"));
         }
-        for (int i = 1; i < len - 2; i++) {
-            System.out.print(arrInt[i] + " * ");
-        }
-        System.out.print(arrInt[len - 2] + " = " + mult + "\n");
-        for (int i = 0; i < len; i++) {
-            System.out.print((i == 0 || i == len - 1) ? (arrInt[i] + "; ") : "");
-        }
+        System.out.println(arrInt[0] + "; " + arrInt[9] + ";");
 
         System.out.println("\n3. Удаление элементов массива");
         double[] arrDouble = new double[15];
@@ -43,32 +39,26 @@ public class ArrayTheme {
         }
         printArrayDouble(arrDouble);
         System.out.println();
-        double midNumber = arrDouble[len / 2];
-        for (int i = 0; i < len; i++) {
-            if (arrDouble[i] > midNumber) {
-                arrDouble[i] = 0;
-            }
-        }
-        printArrayDouble(arrDouble);
+        double middle = arrDouble[len / 2];
         int count = 0;
-        for (double number : arrDouble) {
-            if (number == 0) {
+        for (int i = 0; i < len; i++) {
+            if (arrDouble[i] > middle) {
+                arrDouble[i] = 0;
                 count++;
             }
         }
+        printArrayDouble(arrDouble);
         System.out.println("\nКоличество обнуленных ячеек - " + count);
 
         System.out.println("\n4. Вывод элементов массива лесенкой в обратном порядке");
-        char[] arrLetters = new char[26];
-        char numberChar = 65;
-        len = arrLetters.length;
+        char[] alphabet = new char[26];
+        len = alphabet.length;
         for (int i = 0; i < len; i++) {
-            arrLetters[i] = numberChar;
-            numberChar++;
+            alphabet[i] = (char) ('A' + i);
         }
         for (int i = 1; i <= len; i++) {
             for (int j = len - 1; j > len - 1 - i; j--) {
-                System.out.print(arrLetters[j]);
+                System.out.print(alphabet[j]);
             }
             System.out.println();
         }

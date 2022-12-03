@@ -27,9 +27,9 @@ public class ArrayTheme {
         int mult = 1;
         for (int i = 1; i < len - 1; i++) {
             mult *= arrInt[i];
-            System.out.print((i < len - 2) ? (arrInt[i] + " * ") : (arrInt[i] + " = " + mult + "\n"));
+            System.out.print(arrInt[i] + ((i < len - 2) ? (" * ") : (" = " + mult)));
         }
-        System.out.println(arrInt[0] + "; " + arrInt[9] + ";");
+        System.out.println("\n" + arrInt[0] + "; " + arrInt[9] + ";");
 
         System.out.println("\n3. Удаление элементов массива");
         double[] arrDouble = new double[15];
@@ -39,10 +39,10 @@ public class ArrayTheme {
         }
         printArrayDouble(arrDouble);
         System.out.println();
-        double middle = arrDouble[len / 2];
+        double middleNum = arrDouble[len / 2];
         int count = 0;
         for (int i = 0; i < len; i++) {
-            if (arrDouble[i] > middle) {
+            if (arrDouble[i] > middleNum) {
                 arrDouble[i] = 0;
                 count++;
             }
@@ -66,17 +66,19 @@ public class ArrayTheme {
         System.out.println("\n5. Генерация уникальных чисел");
         arrInt = new int[30];
         len = arrInt.length;
-        for (int i = 0; i < len; i++) {
-            arrInt[i] = (int) (60 + Math.random() * 40);
-        }
-        for (int i = 0; i < len; i++) {
-            for (int j = 0; j < len; j++) {
-                if (i != j && arrInt[i] == arrInt[j]) {
-                    while (arrInt[i] == arrInt[j]) {
-                        arrInt[i] = (int) (60 + Math.random() * 40);
-                    }
-                    j = -1;
+        count = 0;
+        while (count < len) {
+            int currentInt = (int) (60 + Math.random() * 40);
+            boolean found = false;
+            for (int i = 0; i < count; i++) {
+                if (arrInt[i] == currentInt) {
+                    found = true;
+                    break;
                 }
+            }
+            if (!found) {
+                arrInt[count] = currentInt;
+                count++;
             }
         }
         Arrays.sort(arrInt);
@@ -88,18 +90,18 @@ public class ArrayTheme {
         }
 
         System.out.println("\n6. Сдвиг элементов массива");
-        String[] arrString = {"    ", "AA", "", "BBB", "CC", "D", "    ", "E", "FF", "G", ""};
-        String[] arrStringCopy = new String[getLength(arrString)];
-        int lenString = arrString.length;
+        String[] srcNum = {"    ", "AA", "", "BBB", "CC", "D", "    ", "E", "FF", "G", ""};
+        String[] destNum = new String[getLength(srcNum)];
+        int lenString = srcNum.length;
         int fromArr = 0;
         int toArr = 0;
         len = 0;
         for (int i = 0; i < lenString; i++) {
-            if (!arrString[i].isBlank()) {
+            if (!srcNum[i].isBlank()) {
                 len++;
             } else {
                 if (len != 0) {
-                    System.arraycopy(arrString, fromArr, arrStringCopy, toArr, len);
+                    System.arraycopy(srcNum, fromArr, destNum, toArr, len);
                 }
                 toArr += len;
                 fromArr = i + 1;
@@ -107,11 +109,11 @@ public class ArrayTheme {
             }
         }
         if (len != 0) {
-            System.arraycopy(arrString, fromArr, arrStringCopy, toArr, len);
+            System.arraycopy(srcNum, fromArr, destNum, toArr, len);
         }
-        printArrayString(arrString);
+        printArrayString(srcNum);
         System.out.println();
-        printArrayString(arrStringCopy);
+        printArrayString(destNum);
     }
 
     private static void printArrayDouble(double[] arrDouble) {

@@ -67,14 +67,14 @@ public class ArrayTheme {
         count = 0;
         while (count < len) {
             int actualNum = (int) (60 + Math.random() * 40);
-            boolean unique = false;
+            boolean found = false;
             for (int i = 0; i < count; i++) {
                 if (arrInt[i] == actualNum) {
-                    unique = true;
+                    found = true;
                     break;
                 }
             }
-            if (!unique) {
+            if (!found) {
                 arrInt[count] = actualNum;
                 count++;
             }
@@ -88,14 +88,14 @@ public class ArrayTheme {
         }
 
         System.out.println("\n6. Сдвиг элементов массива");
-        String[] srcNum = {"    ", "AA", "", "BBB", "CC", "D", "    ", "E", "FF", "G", ""};
+        String[] srcNum = {"    ", "AA", "", "BBB", "CC", "D", "    ", "E", "FF", "G", "H"};
         String[] destNum = new String[getLength(srcNum)];
         len = srcNum.length;
         int fromArr = 0;
         int toArr = 0;
         count = 0;
-        for (int i = 0; i < len; i++) {
-            if (!srcNum[i].isBlank()) {
+        for (int i = 0; i <= len; i++) {
+            if (i < len && !srcNum[i].isBlank()) {
                 count++;
             } else {
                 if (count != 0) {
@@ -106,9 +106,7 @@ public class ArrayTheme {
                 count = 0;
             }
         }
-        if (count != 0) {
-            System.arraycopy(srcNum, fromArr, destNum, toArr, count);
-        }
+
         printArrString(srcNum);
         System.out.println();
         printArrString(destNum);

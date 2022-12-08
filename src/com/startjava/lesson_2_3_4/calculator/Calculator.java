@@ -1,40 +1,34 @@
 package com.startjava.lesson_2_3_4.calculator;
 
 public class Calculator {
-    private int num1;
-    private int num2;
-    private char sign;
+    private String expression;
 
-    public void setNum1(int num1) {
-        this.num1 = num1;
-    }
-
-    public void setNum2(int num2) {
-        this.num2 = num2;
-    }
-
-    public void setSign(char sign) {
-        this.sign = sign;
+    public void setExpression(String expression) {
+        this.expression = expression;
     }
 
     public long calculate() {
-        long result = 1;
+        String[] elements = expression.split(" ");
+        int num1 = Integer.parseInt(elements[0]);
+        char sign = elements[1].charAt(0);
+        int num2 = Integer.parseInt(elements[2]);
+        for (String num:elements) {
+            System.out.println(num);
+        }
+        System.out.println();
         switch (sign) {
             case '+':
-                return num1 + num2;
+                return Math.addExact(num1, num2);
             case '-':
-                return num1 - num2;
+                return Math.subtractExact(num1, num2);
             case '*':
-                return num1 * num2;
+                return Math.multiplyFull(num1, num2);
             case '/':
-                return num1 / num2;
+                return Math.floorDiv(num1, num2);
             case '^':
-                for (int i = 0; i < num2; i++) {
-                    result *= num1;
-                }
-                return result;
+                return (long) Math.pow(num1, num2);
             case '%':
-                return num1 % num2;
+                return (long) Math.IEEEremainder(num1, num2);
             default:
                 System.out.println("Неизвестная операция");
                 return 0;

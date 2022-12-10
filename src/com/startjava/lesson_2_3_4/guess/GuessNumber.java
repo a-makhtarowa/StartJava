@@ -4,8 +4,8 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class GuessNumber {
-    private int startRange = 1;
-    private int endRange = 100;
+    private final int startRange = 1;
+    private final int endRange = 100;
     private Player player1;
     private Player player2;
     private int randomNum;
@@ -20,10 +20,26 @@ public class GuessNumber {
         boolean isEndGame;
         do {
             isEndGame = isGuessed(player1);
-            if (!isGuessed(player1)) {
+            if (!isEndGame) {
                 isEndGame = isGuessed(player2);
+                if (player1.getNumberAttempt() == 10) {
+                    System.out.println("У игрока " + player1.getName() + " закончились попытки");
+                    break;
+                }
             }
         } while (!isEndGame);
+        System.out.println("Игрок " + player1.getName() + " называл числа:");
+        printAttemptNumber(player1);
+        System.out.println("Игрок " + player2.getName() + " называл числа:");
+        printAttemptNumber(player2);
+
+    }
+
+    public void printAttemptNumber(Player player) {
+        for (int number : player.getAttempts()) {
+            System.out.print(number + " ");
+        }
+        System.out.println();
     }
 
     private int generateRandomNum() {
@@ -42,8 +58,10 @@ public class GuessNumber {
 
     private boolean isGuessed(Player player) {
         int playerNum = inputNumber(player);
+        player.addNextAttempt(playerNum);
         if (playerNum == randomNum) {
-            System.out.println("Игрок " + player.getName() + " победил!");
+            System.out.println("Игрок " + player.getName() + " угадал число " + randomNum + " c "
+                    + player.getNumberAttempt() + " попытки");
             return true;
         }
         if (playerNum > randomNum) {

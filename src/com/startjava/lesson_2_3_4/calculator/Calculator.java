@@ -1,20 +1,12 @@
 package com.startjava.lesson_2_3_4.calculator;
 
 public class Calculator {
-    private String expression;
 
-    public void setExpression(String expression) {
-        this.expression = expression;
-    }
-
-    public long calculate() {
+    public long calculate(String expression) {
         String[] elements = expression.split(" ");
         int num1 = Integer.parseInt(elements[0]);
         char sign = elements[1].charAt(0);
         int num2 = Integer.parseInt(elements[2]);
-        for (String num:elements) {
-            System.out.println(num);
-        }
         System.out.println();
         switch (sign) {
             case '+':

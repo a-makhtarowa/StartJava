@@ -6,14 +6,13 @@ public class CalculatorTest {
     public static void main(String[] args) {
         Scanner scn = new Scanner(System.in);
         do {
-            performCalculation(scn);
+            doCalculation(scn);
         } while (isNext(scn));
     }
 
-    private static void performCalculation(Scanner scn) {
-        Calculator calculator = new Calculator();
+    private static void doCalculation(Scanner scn) {
         System.out.println("Введите математическое выражение:");
-        System.out.println(calculator.calculate(scn.nextLine()));
+        Calculator.calculate(scn.nextLine());
     }
 
     private static boolean isNext(Scanner scn) {

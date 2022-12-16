@@ -13,7 +13,7 @@ public class CalculatorTest {
     private static void doCalculation(Scanner scn) {
         System.out.println("Введите математическое выражение:");
         try {
-            Calculator.calculate(scn.nextLine());
+            System.out.println(Calculator.calculate(scn.nextLine()));
         } catch (RuntimeException e) {
             System.out.println("Выражение не соответствует условию: " + e.getMessage() +
                     ". Пожалуйста, введите правильное выражение");

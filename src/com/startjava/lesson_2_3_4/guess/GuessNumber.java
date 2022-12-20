@@ -3,10 +3,10 @@ package com.startjava.lesson_2_3_4.guess;
 import java.util.Scanner;
 
 public class GuessNumber {
-    private final int START_RANGE = 1;
-    private final int END_RANGE = 100;
-    private Player player1;
-    private Player player2;
+    private static final int START_RANGE = 1;
+    private static final int END_RANGE = 100;
+    private final Player player1;
+    private final Player player2;
     private int secretNum;
 
     public GuessNumber(Player player1, Player player2) {

@@ -12,8 +12,6 @@ public class GuessNumberTest {
         GuessNumber game = new GuessNumber(player1, player2);
         System.out.println("У каждого игрока по 10 попыток");
         do {
-            player1.reset();
-            player2.reset();
             game.start();
         } while (isNext(scn));
     }

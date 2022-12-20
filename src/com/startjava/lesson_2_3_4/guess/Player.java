@@ -6,6 +6,7 @@ public class Player {
     private String name;
     private int[] attempts = new int[10];
     private int numberAttempt;
+
     public Player(String name) {
         this.name = name;
     }
@@ -14,8 +15,8 @@ public class Player {
         return name;
     }
 
-    public void addNextAttempt(int number) {
-        this.attempts[numberAttempt] = number;
+    public void addAttempt(int number) {
+        attempts[numberAttempt] = number;
         numberAttempt++;
     }
 
@@ -27,9 +28,9 @@ public class Player {
         return numberAttempt;
     }
 
-    public void reset() {
+    public void clearAttempts() {
         if (numberAttempt != 0) {
-            Arrays.fill(attempts, 0);
+            Arrays.fill(attempts, 0, numberAttempt, 0);
             numberAttempt = 0;
         }
     }

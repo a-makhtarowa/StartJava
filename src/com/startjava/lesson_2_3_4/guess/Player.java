@@ -6,6 +6,7 @@ public class Player {
     private String name;
     private int[] attempts = new int[10];
     private int numberAttempt;
+    private int numberWin;
 
     public Player(String name) {
         this.name = name;
@@ -15,9 +16,13 @@ public class Player {
         return name;
     }
 
-    public void addAttempt(int number) {
-        attempts[numberAttempt] = number;
-        numberAttempt++;
+    public void setAttempt(int number) {
+        if (number <= 0 || number > 100) {
+            throw new RuntimeException("Введенное число не удовлетворяет условию: (0; 100]");
+        } else {
+            attempts[numberAttempt] = number;
+            numberAttempt++;
+        }
     }
 
     public int[] getAttempts() {
@@ -33,5 +38,13 @@ public class Player {
             Arrays.fill(attempts, 0, numberAttempt, 0);
             numberAttempt = 0;
         }
+    }
+
+    public int getNumberWin() {
+        return numberWin;
+    }
+
+    public void win() {
+        numberWin++;
     }
 }

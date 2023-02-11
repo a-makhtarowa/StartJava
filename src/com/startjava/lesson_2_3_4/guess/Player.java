@@ -16,13 +16,12 @@ public class Player {
         return name;
     }
 
-    public void setAttempt(int number) {
+    public void addAttempt(int number) {
         if (number <= 0 || number > 100) {
             throw new RuntimeException("Введенное число не удовлетворяет условию: (0; 100]");
-        } else {
-            attempts[numberAttempt] = number;
-            numberAttempt++;
         }
+        attempts[numberAttempt] = number;
+        numberAttempt++;
     }
 
     public int[] getAttempts() {

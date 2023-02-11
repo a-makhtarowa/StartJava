@@ -5,6 +5,8 @@ import java.util.*;
 public class GuessNumber {
     private static final int START_RANGE = 1;
     private static final int END_RANGE = 100;
+    private static final int NUMBER_OF_ROUNDS = 3;
+    private static final int NUMBER_OF_ATTEMPTS = 10;
     private final Player[] players;
 
     public GuessNumber(Player... players) {
@@ -18,51 +20,41 @@ public class GuessNumber {
             System.out.print(player.getName() + "; ");
         }
         System.out.println();
-            for (int i = 0; i < 3; i++) {
-                int secretNumber = generateRandomNumber();
-                boolean stopGame = false;
-                do {
-                    for (Player player : players) {
-                        if (player.getNumberAttempt() == 10) {
-                            System.out.println("У игрока " + player.getName() + " закончились попытки");
-                            stopGame = true;
-                            break;
+        for (int i = 0; i < NUMBER_OF_ROUNDS; i++) {
+            int secretNumber = generateSecretNumber();
+            boolean finishedGame = false;
+            do {
+                for (Player player : players) {
+                    if (player.getNumberAttempt() == NUMBER_OF_ATTEMPTS) {
+                        System.out.println("У игрока " + player.getName() + " закончились попытки");
+                        finishedGame = true;
+                        break;
                         }
-                        stopGame = isGuessed(player, secretNumber);
-                        if (stopGame) {
+                        finishedGame = isGuessed(player, secretNumber);
+                        if (finishedGame) {
                             break;
                         }
                     }
-                } while (!stopGame);
+                } while (!finishedGame);
+                printPlayersNumbers();
                 for (Player player : players) {
-                    System.out.println("Игрок " + player.getName() + " называл числа:");
-                    printAttemptNumber(player);
                     player.clearAttempts();
                 }
             }
-        String nameMaxWinPlayer = players[0].getName();
-        int numberMaxWinPlayer = players[0].getNumberWin();
-        for (int i = 1; i < players.length; i++) {
-            if (numberMaxWinPlayer > players[i].getNumberWin()) {
-                numberMaxWinPlayer = players[i].getNumberWin();
-                nameMaxWinPlayer = players[i].getName();
-            }
-        }
-        System.out.println("По результатам трех раундов победителем является:");
-        System.out.println(nameMaxWinPlayer);
-    }
-
-    private int generateRandomNumber() {
-        return (int) (Math.random() * END_RANGE + START_RANGE);
+        defineTheWinner();
     }
 
     private void castLots() {
         for (int i = 0; i < players.length; i++) {
-            int j = (int) (Math.random() * (players.length - 1));
+            int j = (int) (Math.random() * i);
             Player temp = players[i];
             players[i] = players[j];
             players[j] = temp;
         }
+    }
+
+    private int generateSecretNumber() {
+        return (int) (Math.random() * END_RANGE + START_RANGE);
     }
 
     private boolean isGuessed(Player player, int secretNumber) {
@@ -85,7 +77,7 @@ public class GuessNumber {
         while (true) {
             try {
                 int playerNum = scn.nextInt();
-                player.setAttempt(playerNum);
+                player.addAttempt(playerNum);
                 return playerNum;
             } catch (RuntimeException e) {
                 System.out.println(e.getMessage());
@@ -94,10 +86,26 @@ public class GuessNumber {
         }
     }
 
-    public void printAttemptNumber(Player player) {
-        for (int number : player.getAttempts()) {
-            System.out.print(number + " ");
+    public void printPlayersNumbers() {
+        for (Player player : players) {
+            System.out.println("Игрок " + player.getName() + " называл числа:");
+            for (int number : player.getAttempts()) {
+                System.out.print(number + " ");
+            }
+            System.out.println();
         }
-        System.out.println();
+    }
+
+    private void defineTheWinner() {
+        String nameMaxWinPlayer = players[0].getName();
+        int numberMaxWinPlayer = players[0].getNumberWin();
+        for (int i = 1; i < players.length; i++) {
+            if (numberMaxWinPlayer > players[i].getNumberWin()) {
+                numberMaxWinPlayer = players[i].getNumberWin();
+                nameMaxWinPlayer = players[i].getName();
+            }
+        }
+        System.out.println("По результатам трех раундов победителем является:");
+        System.out.println(nameMaxWinPlayer);
     }
 }

@@ -43,7 +43,7 @@ public class Player {
         return numberWin;
     }
 
-    public void win() {
+    public void incrementWin() {
         numberWin++;
     }
 }
